@@ -1,0 +1,243 @@
+/* Color palette*/
+:root {
+    --salmon: #ffc3ae;
+    --black: #000000;
+    --white: #ffffff;
+    --light-bg: #fff8f6;
+    --border-dashed: #ffc3ae;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: var(--white);
+    color: var(--black);
+    height: 100vh;
+    overflow: hidden;
+}
+/* Page layout*/
+.app-layout {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 70px);
+}
+/* Navbar and header stuff*/
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0 24px;
+    background-color: var(--white);
+    border-bottom: 1px solid #f0e0da;
+}
+
+.navbar-left,
+.navbar-center,
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    margin-top: 16px;
+}
+
+/* Outfit title stuff*/
+.outfit-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--black);
+    border-bottom: 2px dashed var(--salmon);
+    padding-bottom: 2px;
+    outline: none;
+    cursor: text;
+    min-width: 80px;
+}
+
+.outfit-title:focus {
+    border-bottom: 2px solid var(--salmon);
+}
+
+.edit-icon {
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+/* Profile circle stuff*/
+.profile-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--salmon);
+    cursor: pointer;
+    border: 2px solid var(--black);
+}
+
+/* Left nav*/
+.left-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 12px;
+    background-color: var(--white);
+}
+
+.nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: 2px solid var(--salmon);
+    background-color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--salmon);
+}
+
+/* Outfit workspace*/
+.workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    background-color: var(--light-bg);
+    border: 2px dashed var(--border-dashed);
+    margin: 16px;
+    border-radius: 16px;
+    overflow-y: auto;
+}
+
+/* Clothing slot stuff*/
+.clothing-slot {
+    width: 220px;
+    height: 180px;
+    border: 2px dashed var(--black);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.clothing-slot:hover {
+    border-color: var(--salmon);
+    background-color: var(--light-bg);
+}
+
+.slot-label {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--salmon);
+    color: var(--black);
+    padding: 6px 18px;
+    border-radius: 20px;
+}
+
+/* Sidebar*/
+.sidebar {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 16px;
+    background-color: var(--white);
+    border-left: 1px solid #f0e0da;
+    overflow-y: auto;
+}
+
+/* Search bar stuff*/
+.search-bar-wrapper {
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 2px solid var(--salmon);
+    border-radius: 24px;
+    font-size: 15px;
+    outline: none;
+    background-color: var(--white);
+    color: var(--black);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(255, 195, 174, 0.3);
+}
+
+/* Search results grid*/
+.search-results {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.result-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Find Me A Fit button stuff*/
+.find-fit-btn {
+    width: 80%;
+    padding: 12px 0;
+    background-color: var(--white);
+    color: var(--black);
+    border: 2px solid var(--salmon);
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin-top: auto;
+}
+
+.find-fit-btn:hover {
+    background-color: var(--salmon);
+    color: var(--black);
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    grid-column: span 2;
+}

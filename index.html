@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>PinFit</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+    <header class="navbar"> <!--Header bar-->
+        <div class="navbar-left"> <!--Left side logo-->
+            <img src="PinFitLogoR.png" alt="PinFit Logo" class="logo"/>
+        </div>
 
+        <div class="navbar-center"> <!--Editable outfit name-->
+            <span class="outfit-title" contenteditable="true">PinFit 1</span>
+            <span class="edit-icon">✏️</span>
+        </div>
+
+        <div class="navbar-right"> <!--Profile picture-->
+            <div class="profile-circle"></div>
+        </div>
+    </header>
+
+    <main class="app-layout"> <!--Main content area-->
+
+        <nav class="left-nav"> <!--Left navigation icons-->
+            <button class="nav-btn" title="Save">💾</button>
+            <button class="nav-btn" title="My Fits">👔</button>
+            <button class="nav-btn" title="Settings">⚙️</button>
+        </nav>
+
+        <section class="workspace"> <!--Outfit workspace-->
+
+            <div class="clothing-slot" id="slot-tops">
+                <span class="slot-label">Tops</span>
+            </div>
+
+            <div class="clothing-slot" id="slot-bottoms">
+                <span class="slot-label">Bottoms</span>
+            </div>
+
+            <div class="clothing-slot" id="slot-shoes">
+                <span class="slot-label">Shoes</span>
+            </div>
+
+        </section>
+
+        <aside class="sidebar"> <!--Right sidebar-->
+
+            <div class="search-bar-wrapper">
+                <input type="text" class="search-input" placeholder="Search clothing..." />
+            </div>
+
+            <div class="search-results">
+                <!--Search results will go here, populated by JS-->
+            </div>
+
+            <button class="find-fit-btn">Find Me A Fit</button>
+
+        </aside>
+
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
