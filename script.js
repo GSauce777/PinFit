@@ -103,6 +103,23 @@ clothingSlots.forEach(slot => {
                 slot.appendChild(existingImg);
             }
             existingImg.src = imgSrc;
+
+            let clearBtn = slot.querySelector('.clear-btn');
+
+            if (!clearBtn) {
+                clearBtn = document.createElement('button');
+                clearBtn.classList.add('clear-btn');
+                clearBtn.textContent = '✕';
+                clearBtn.title = "Clear slot";
+
+                clearBtn.addEventListener('click', () => {
+                    existingImg.remove();
+                    clearBtn.remove();
+                    if (label) label.style.display = 'block';
+                });
+
+                slot.appendChild(clearBtn);
+            }
         }
     });
 });
