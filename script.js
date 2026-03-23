@@ -1,7 +1,3 @@
-// Config
-
-const API_KEY = "53e43554f2f3e2859f39f03d9705e99f37721e7871f125faa2a5469ead4b1419";
-
 // Get html elements
 const searchInput = document.querySelector(".search-input");
 const searchResults = document.querySelector(".search-results");
