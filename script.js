@@ -9,7 +9,7 @@ async function searchClothing(query) {
     searchResults.innerHTML = "<p class='loading-text'>Searching...</p>";
 
     // Calling server
-    const url = `/search?q=${encodeURIComponent(query)}`;
+    const url = `http://localhost:3000/search?q=${encodeURIComponent(query)}`;
 
     try {
         const response = await fetch(url);
