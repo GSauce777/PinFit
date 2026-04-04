@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>PinFit</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
     <header class="navbar"> <!--Header bar-->
@@ -61,6 +62,28 @@
         </aside>
 
     </main>
+
+    <!--Modal for displaying saved outfits-->
+    <div id="savedOutfitsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Saved Outfits</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div id="savedOutfitsList" class="saved-outfits-grid">
+                <!-- Saved outfits will be displayed here -->
+                <div class="loading-text">Loading your outfits...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden input for user Id for testing purposes -->
+    <!--this would come from a login system, right now we dont have a 
+    proper login/sign page to get userId-->
+    <input type="hidden" id="currentUserId" value="1">
+
     <script src="js/script.js"></script>
+    <script src="js/saveOutfit.js"></script>
+    <script src="js/loadOutfits.js"></script>
 </body>
 </html>
