@@ -1,0 +1,25 @@
+1. Created database tables using MYSQl
+a users table(stores user information)=for future login, for now, for testing purposes i have
+one user saved in the database with user Id: 1
+saved-outfits table: sotres all saved outfits with a foreigh key to users
+
+
+2. saving outfits to Database 
+when the user clicks the save button to save outfits, it gets stored in the Database
+with outfit name, top image url, bottom and shoes and the user Id, along with the timpstam of when saved
+it also validates that at least one clothing item exista before saving
+shows success or error notifications
+and a keyboard shortcut : ctrl+s to save
+
+3. view saved outfits
+User can view their saved outfits by clicking My fits button. that opens a modal window
+it displays all saved outfits
+each outfits card shows: outfit name, preview images, data saved, load button to bring outfit back to workspace
+and delete button to remove from database
+
+
+Next Steps:
+user login/authentication
+"find Me A Fit"
+Maybe Adding a slot for accessories?
+Categories or tags for outfits e.g casual, formal, etc
