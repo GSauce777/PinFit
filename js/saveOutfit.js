@@ -74,51 +74,36 @@ function showMessage(message, isError = false){
     }, 3000);
 }
 
-//Save outfit function
-async function saveCurrentOutfit(){
-    //the outfit name from existing editable title
+//Save outfit function (localStorage-based)
+function saveCurrentOutfit(){
+    const outfitTitle = document.querySelector('.outfit-title');
+    const outfitName = outfitTitle ? outfitTitle.textContent.trim() : 'Untitled Outfit';
 
-    const outfitTitle= document.querySelector('.outfit-title');
-    const outfitName =outfitTitle ? outfitTitle.textContent.trim():'Untitled Outfit';
-    
-    //current outfit from workspace
-    const currentOutfit=getCurrentOutfitFromWorkspace();
- 
+    const currentOutfit = getCurrentOutfitFromWorkspace();
+
     if (!currentOutfit.top && !currentOutfit.bottom && !currentOutfit.shoes) {
         showMessage('Please add at least one clothing item to your outfit before saving!', true);
         return;
     }
-    
-    //user ID from hidden input
-    const userIdInput = document.getElementById('currentUserId');
-    const userId = userIdInput ? userIdInput.value : 1; //user id is 1 for now since we dont have any registered user
-    
+
     try {
-        const response = await fetch('/api/save-outfit',{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user_id: parseInt(userId),
-                outfit_name: outfitName,
-                top_image: currentOutfit.top,
-                bottom_image: currentOutfit.bottom,
-                shoes_image: currentOutfit.shoes
-            })
+        const stored = localStorage.getItem('pinfit_outfits');
+        const outfits = stored ? JSON.parse(stored) : [];
+
+        outfits.push({
+            id: Date.now(),
+            outfit_name: outfitName,
+            top_image_url: currentOutfit.top,
+            bottom_image_url: currentOutfit.bottom,
+            shoes_image_url: currentOutfit.shoes,
+            created_at: new Date().toISOString()
         });
-        
-        const data =await response.json();
-        
-        if(data.success) {
-            showMessage(`Outfit "${outfitName}" saved successfully!`);
-            console.log('Outfit saved:', data);
-        }else{
-            showMessage(`Failed to save outfit: ${data.error || 'Unknown error'}`, true);
-        }
+
+        localStorage.setItem('pinfit_outfits', JSON.stringify(outfits));
+        showMessage(`Outfit "${outfitName}" saved successfully!`);
     } catch (error) {
         console.error('Error saving outfit:', error);
-        showMessage('Failed to save outfit. Make sure the server is running.', true);
+        showMessage('Failed to save outfit.', true);
     }
 }
 

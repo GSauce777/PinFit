@@ -82,6 +82,14 @@ body {
     background-color: var(--salmon);
     cursor: pointer;
     border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+    user-select: none;
 }
 
 /* Left nav*/

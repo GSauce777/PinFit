@@ -23,7 +23,7 @@
     box-shadow:0 5px 25px rgba(0,0,0,0.3);
     animation: slideDown 0.3s;
     display:flex;
-    flex-direction: olumn;
+    flex-direction: column;
 }
 
 .modal-header{
@@ -183,4 +183,50 @@
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/*Name prompt modal*/
+.name-modal-content{
+    max-width: 420px;
+}
+
+.name-modal-body{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.name-modal-body p{
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+}
+
+.name-modal-body input{
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    outline: none;
+}
+
+.name-modal-body input:focus{
+    border-color: #ffc3ae;
+}
+
+.name-modal-body button{
+    padding: 10px;
+    background-color: #ffc3ae;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.name-modal-body button:hover{
+    background-color: #ffc3ae;
 }

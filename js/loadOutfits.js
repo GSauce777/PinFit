@@ -72,23 +72,15 @@ function loadOutfitToWorkspace(outfit){
 }
 
 //deletes outfit function
-async function deleteOutfit(outfitId){
-    if(!confirm('Are you sure you want to delete this outfit?')) {
-        return;
-    }
+function deleteOutfit(outfitId){
+    if(!confirm('Are you sure you want to delete this outfit?')) return;
     try{
-        const response = await fetch(`/api/delete-outfit/${outfitId}`, {
-            method: 'DELETE'
-        });
-        
-        const data = await response.json();
-        
-        if(data.success) {
-            showMessage('Outfit deleted successfully!');
-            loadSavedOutfits(); // Refresh the list
-        }else {
-            showMessage('Failed to delete outfit', true);
-        }
+        const stored = localStorage.getItem('pinfit_outfits');
+        const outfits = stored ? JSON.parse(stored) : [];
+        const filtered = outfits.filter(o => o.id !== outfitId);
+        localStorage.setItem('pinfit_outfits', JSON.stringify(filtered));
+        showMessage('Outfit deleted successfully!');
+        loadSavedOutfits();
     } catch(error) {
         console.error('Error deleting outfit:', error);
         showMessage('Failed to delete outfit', true);
@@ -160,34 +152,23 @@ function displaySavedOutfits(outfits){
 }
 
 //Load saved outfits from server
-async function loadSavedOutfits() {
+function loadSavedOutfits() {
     const savedOutfitsList = document.getElementById('savedOutfitsList');
-    if (!savedOutfitsList)return;
-    
-    const userIdInput =document.getElementById('currentUserId');
-    const userId = userIdInput ? userIdInput.value :1;
-    
+    if (!savedOutfitsList) return;
+
     savedOutfitsList.innerHTML = '<div class="loading-text">Loading your outfits...</div>';
-    
-    try{
-        const response =await fetch(`/api/get-outfits/${userId}`);
-        const data= await response.json();
-        
-        if (data.success && data.outfits) {
-            displaySavedOutfits(data.outfits);
-        } else {
-            savedOutfitsList.innerHTML = '<div class="no-outfits">No saved outfits yet. Start creating!</div>';
-        }
+
+    try {
+        const stored = localStorage.getItem('pinfit_outfits');
+        const outfits = stored ? JSON.parse(stored) : [];
+        displaySavedOutfits(outfits);
     } catch (error) {
         console.error('Error loading outfits:', error);
         savedOutfitsList.innerHTML = '<div class="no-outfits">Failed to load outfits.</div>';
     }
-    
-    // Show modal
+
     const modal = document.getElementById('savedOutfitsModal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
+    if (modal) modal.style.display = 'block';
 }
 
 //Helper function to escape HTML

@@ -19,7 +19,7 @@
         </div>
 
         <div class="navbar-right"> <!--Profile picture-->
-            <div class="profile-circle"></div>
+            <div class="profile-circle" id="profileCircle"></div>
         </div>
     </header>
 
@@ -77,11 +77,21 @@
         </div>
     </div>
 
-    <!-- Hidden input for user Id for testing purposes -->
-    <!--this would come from a login system, right now we dont have a 
-    proper login/sign page to get userId-->
-    <input type="hidden" id="currentUserId" value="1">
+    <!--Name prompt, shown on first visit only-->
+    <div id="nameModal" class="modal">
+        <div class="modal-content name-modal-content">
+            <div class="modal-header">
+                <h2>Welcome to PinFit!</h2>
+            </div>
+            <div class="name-modal-body">
+                <p>What should we call you?</p>
+                <input type="text" id="nameInput" placeholder="Enter your name" maxlength="40" />
+                <button id="nameSubmitBtn">Continue</button>
+            </div>
+        </div>
+    </div>
 
+    <script src="js/user.js"></script>
     <script src="js/script.js"></script>
     <script src="js/saveOutfit.js"></script>
     <script src="js/loadOutfits.js"></script>
