@@ -294,3 +294,60 @@ body {
     color: var(--white);
     border-color: var(--salmon);
 }
+
+/*Tablet Resizing*/
+@media (max-width: 1024px) {
+    body {
+        overflow: auto; /* allows vertical scroll on smaller screens */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .app-layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* Left nav becomes horizontal bar under header */
+    .left-nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        padding: 12px;
+        border-bottom: 1px solid #f0e0da;
+    }
+
+    .workspace {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 12px;
+        padding: 20px;
+        gap: 14px;
+    }
+
+    .clothing-slot {
+        width: 200px;
+        height: 160px;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #f0e0da;
+        padding: 16px;
+    }
+
+    .search-results {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .find-fit-btn {
+        width: 60%;
+        margin-top: 16px;
+    }
+
+    .logo {
+        height: 70px;
+        margin-top: 8px;
+    }
+}
