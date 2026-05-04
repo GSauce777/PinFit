@@ -1,7 +1,6 @@
 // Get html elements
 const searchInput = document.querySelector(".search-input");
 const searchResults = document.querySelector(".search-results");
-const findFitBtn = document.querySelector(".find-fit-btn");
 const sidebar = document.querySelector(".sidebar");
 
 // Pagination state for infinite scroll
@@ -238,3 +237,31 @@ outfitTitle.addEventListener('paste', (event) => {
         document.execCommand('insertText', false, textToInsert);
     }
 })
+
+function remixMeAFit() {
+    const stored = localStorage.getItem('pinfit_outfits');
+    const outfits = stored ? JSON.parse(stored) : [];
+
+    const tops    = outfits.map(o => o.top_image_url).filter(Boolean);
+    const bottoms = outfits.map(o => o.bottom_image_url).filter(Boolean);
+    const shoes   = outfits.map(o => o.shoes_image_url).filter(Boolean);
+
+    if (tops.length === 0 && bottoms.length === 0 && shoes.length === 0) {
+        showMessage('Save a few outfits first so we can mix them up!', true);
+        return;
+    }
+
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)] || null;
+
+    loadOutfitToWorkspace({
+        outfit_name: 'Remix Me A Fit',
+        top_image_url:    pick(tops),
+        bottom_image_url: pick(bottoms),
+        shoes_image_url:  pick(shoes),
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.find-fit-btn');
+    if (btn) btn.addEventListener('click', remixMeAFit);
+});

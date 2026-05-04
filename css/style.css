@@ -205,6 +205,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    padding-bottom: 8px;
 }
 
 .result-img {
@@ -234,6 +235,12 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     margin-top: auto;
+
+    /* Pin the button to the bottom of the sidebar; results scroll behind it */
+    position: sticky;
+    bottom: 12px;
+    z-index: 5;
+    box-shadow: 0 -8px 12px var(--white); /* soft fade so images don't bleed under */
 }
 
 .find-fit-btn:hover {
