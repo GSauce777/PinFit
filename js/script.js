@@ -50,7 +50,7 @@ async function searchClothing(query, { append = false } = {}) {
         // If the page didn't fill the viewport, immediately try the next one
         // (otherwise the scroll listener would never fire to trigger more)
         if (!append && sidebar.scrollHeight <= sidebar.clientHeight) {
-            searchClothing(currentQuery, { append: true });
+            await searchClothing(currentQuery, {append: true});
         }
     } catch (error) {
         removeLoadingIndicator();
